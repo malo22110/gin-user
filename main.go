@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	log.Println("====== gin user service launch ======")
 	route := gin.Default()
 	route.Any("/testing", startPage)
 	route.Run(":8085")
@@ -17,7 +18,9 @@ func startPage(c *gin.Context) {
 	if c.ShouldBindQuery(&person) == nil {
 		log.Println("====== Only Bind By Query String ======")
 		log.Println(person.Name)
-		log.Println(person.Address)
+		log.Println(person.Email)
+		log.Println(person.Secret)
+		log.Println(person.BirthDate)
 	}
 	c.String(200, "Success")
 }
